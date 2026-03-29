@@ -8,11 +8,4 @@ A lightweight Hollow Knight: Silksong mod that plays the "Faah" sound effect whe
 - Easy to install through Thunderstore and Gale Mod Manager.
 
 ## Install
-**Thunderstore:** [install from Thunderstore here.](https://thunderstore.io/c/hollow-knight-silksong/p/MikeyMods/SilksongFaah/)
-
-**Nexus Mods:** [install from Nexus Mods here.](https://www.nexusmods.com/hollowknightsilksong/mods/1010)
-
 **If installing manually:** Create and place the contents into a `SilksongFaah` folder in your games `BepInEx/plugins` folder (requires the BepInEx modloader).
-
-`SilksongFaah-1.0.1` **Is the source code for the Thunderstore download.** <br>
-`SilksongFaah-1.0.2` **Is the source code for the Nexus Mods download.**
