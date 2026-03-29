@@ -5,12 +5,9 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Linq;
-using System.Linq;
-using System.Reflection;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.Rendering;
 
 [BepInPlugin("com.mikey.silksongfaah", "Silksong Faah", "1.0.0")]
 public class SilksongFaah : BaseUnityPlugin
@@ -48,14 +45,14 @@ public class SilksongFaah : BaseUnityPlugin
     // Loads the FAAH mp3 audio file from the plugin directory at runtime
     private IEnumerator LoadFaahCoroutine()
     {
-        string pluginDir = Path.Combine(Paths.PluginPath, "SilksongFaah");
+        string pluginDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         string fileName = "faah.wav";
         string fullPath = Path.Combine(pluginDir, fileName);
 
         // Debugging log statements
         if (!File.Exists(fullPath))
         {
-            _log.LogWarning($"[Silksong Faah] {fileName} not found in {pluginDir}. Place your faah.mp3 there.");
+            _log.LogWarning($"[Silksong Faah] {fileName} not found in {pluginDir}. Place your faah.wav there.");
             yield break;
         }
 

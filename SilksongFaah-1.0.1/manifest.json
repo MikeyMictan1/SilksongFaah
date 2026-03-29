@@ -1,9 +1,9 @@
 {
     "name": "SilksongFaah",
-    "version_number": "1.0.0",
-    "website_url": "",
     "description": "Plays the FAAH sound effect when Hornet dies.",
+    "version_number": "1.0.1",
     "dependencies": [
         "BepInEx-BepInExPack_Silksong-5.4.2304"
-    ]
+    ],
+    "website_url": "https://github.com/MikeyMictan1"
 }

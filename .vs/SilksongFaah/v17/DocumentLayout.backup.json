@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Michael\\source\\repos\\SilksongFaah\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D058BF94-8550-4973-ABF5-B981F0DBE537}|SilksongFaah\\SilksongFaah.csproj|c:\\users\\michael\\source\\repos\\silksongfaah\\silksongfaah\\silksongfaah.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D058BF94-8550-4973-ABF5-B981F0DBE537}|SilksongFaah\\SilksongFaah.csproj|solutionrelative:silksongfaah\\silksongfaah.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D058BF94-8550-4973-ABF5-B981F0DBE537}|SilksongFaahSourceCode\\SilksongFaah.csproj|c:\\users\\michael\\source\\repos\\silksongfaah\\silksongfaahsourcecode\\silksongfaah.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D058BF94-8550-4973-ABF5-B981F0DBE537}|SilksongFaahSourceCode\\SilksongFaah.csproj|solutionrelative:silksongfaahsourcecode\\silksongfaah.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -20,13 +20,13 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "SilksongFaah.cs",
-              "DocumentMoniker": "C:\\Users\\Michael\\source\\repos\\SilksongFaah\\SilksongFaah\\SilksongFaah.cs",
-              "RelativeDocumentMoniker": "SilksongFaah\\SilksongFaah.cs",
-              "ToolTip": "C:\\Users\\Michael\\source\\repos\\SilksongFaah\\SilksongFaah\\SilksongFaah.cs",
-              "RelativeToolTip": "SilksongFaah\\SilksongFaah.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAhAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\Michael\\source\\repos\\SilksongFaah\\SilksongFaahSourceCode\\SilksongFaah.cs",
+              "RelativeDocumentMoniker": "SilksongFaahSourceCode\\SilksongFaah.cs",
+              "ToolTip": "C:\\Users\\Michael\\source\\repos\\SilksongFaah\\SilksongFaahSourceCode\\SilksongFaah.cs",
+              "RelativeToolTip": "SilksongFaahSourceCode\\SilksongFaah.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAwC8AAABbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T10:51:14.402Z",
+              "WhenOpened": "2026-03-29T17:08:05.847Z",
               "EditorCaption": ""
             },
             {
