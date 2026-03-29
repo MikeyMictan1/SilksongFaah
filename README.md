@@ -7,6 +7,10 @@ A lightweight Hollow Knight: Silksong mod that plays the "Faah" sound effect whe
 - Plays "Faah" on hornet death. That's it.
 - Easy to install through Thunderstore and Gale Mod Manager.
 
+## Video Demo
+
+The Video Demo Is Found Here: https://www.youtube.com/watch?v=X6KkrOTBJXk&feature=youtu.be
+
 ## Install
 **Thunderstore:** [install from Thunderstore here.](https://thunderstore.io/c/hollow-knight-silksong/p/MikeyMods/SilksongFaah/)
 
