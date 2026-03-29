@@ -5,11 +5,12 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Linq;
+using System.Linq;
+using System.Reflection;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.Networking;
-using System.Linq;
-using System.Reflection;
+using UnityEngine.Rendering;
 
 [BepInPlugin("com.mikey.silksongfaah", "Silksong Faah", "1.0.0")]
 public class SilksongFaah : BaseUnityPlugin
@@ -20,10 +21,11 @@ public class SilksongFaah : BaseUnityPlugin
     private static double _lastFaahTime = -999;
     private const double FaahCooldown = 0.5;
 
+    // Plays on plugin load, setting up the sound system and applying harmony patches to connect to the games source code
     private void Awake()
     {
+        // Loading resources
         _log = Logger;
-
         _audioSource = gameObject.AddComponent<AudioSource>();
         _audioSource.spatialBlend = 0f;
         _audioSource.volume = 1f;
@@ -32,26 +34,25 @@ public class SilksongFaah : BaseUnityPlugin
 
         var harmony = new Harmony("com.mikey.silksongfaah");
 
-        // Only patch SendHeroDamagedEvent — it's the most specific "hero took damage" hook
-        // The other two (HeroController.TakeDamage, HeroBox.TakeDamageFromDamager) also fire
-        // for nail swings and other non-damage events, causing false triggers
-        TryPatch(harmony, "DamageHero", "SendHeroDamagedEvent");
+        // Run postfix after "PlayerDead" is called in the game manager
+        TryPatch(harmony, "GameManager", "PlayerDead");
 
-        var patched = harmony.GetPatchedMethods().ToList();
-        _log.LogInfo($"[Silksong Faah] Total patched methods: {patched.Count}");
-        foreach (var m in patched)
-            _log.LogInfo($"[Silksong Faah] Patched: {m.DeclaringType?.Name}.{m.Name}");
+        // Debugging
+        System.Collections.Generic.List<MethodBase> patched = harmony.GetPatchedMethods().ToList();
+        debugLogging(patched);
 
-        _log.LogInfo("[Silksong Faah] Plugin loaded and initialised");
+        // Load faah sound effect
         StartCoroutine(LoadFaahCoroutine());
     }
 
+    // Loads the FAAH mp3 audio file from the plugin directory at runtime
     private IEnumerator LoadFaahCoroutine()
     {
         string pluginDir = Path.Combine(Paths.PluginPath, "SilksongFaah");
-        string fileName = "faah.mp3";
+        string fileName = "faah.wav";
         string fullPath = Path.Combine(pluginDir, fileName);
 
+        // Debugging log statements
         if (!File.Exists(fullPath))
         {
             _log.LogWarning($"[Silksong Faah] {fileName} not found in {pluginDir}. Place your faah.mp3 there.");
@@ -60,7 +61,7 @@ public class SilksongFaah : BaseUnityPlugin
 
         string uri = "file:///" + fullPath.Replace("\\", "/");
 
-        using (var uwr = UnityWebRequestMultimedia.GetAudioClip(uri, AudioType.MPEG))
+        using (var uwr = UnityWebRequestMultimedia.GetAudioClip(uri, AudioType.WAV))
         {
             yield return uwr.SendWebRequest();
 
@@ -90,6 +91,7 @@ public class SilksongFaah : BaseUnityPlugin
         }
     }
 
+    // Plays the faah sound with a cooldown to prevent the audio file spam playing (just in case)
     private static void PlayFaah()
     {
         try
@@ -110,23 +112,7 @@ public class SilksongFaah : BaseUnityPlugin
         }
     }
 
-    // ------------------------------------------------------------------------------------------------------------------
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F7))
-        {
-            if (_faahClip != null)
-            {
-                PlayFaah();
-                _log.LogInfo("[Silksong Faah] F7 played faah (debug).");
-            }
-            else
-            {
-                _log.LogWarning("[Silksong Faah] F7 pressed but faah.mp3 not loaded yet.");
-            }
-        }
-    }
-
+    // Uses Harmony to patch the specified method with a postfix that plays the faah sound when hornet dies
     private void TryPatch(Harmony harmony, string typeName, string methodName)
     {
         try
@@ -164,8 +150,38 @@ public class SilksongFaah : BaseUnityPlugin
         }
     }
 
+    // Postfix method to play the faah sound effect
     private static void UniversalDamagePostfix()
     {
         PlayFaah();
+    }
+
+    /* Debugging: Press F7 to play the faah sound manually to confirm its working
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F7))
+        {
+            if (_faahClip != null)
+            {
+                PlayFaah();
+                _log.LogInfo("[Silksong Faah] F7 played faah (debug).");
+            }
+            else
+            {
+                _log.LogWarning("[Silksong Faah] F7 pressed but faah.mp3 not loaded yet.");
+            }
+        }
+    }
+    */
+
+    // Debugging: log statements
+    private void debugLogging(System.Collections.Generic.List<MethodBase> patched)
+    {
+        _log.LogInfo($"[Silksong Faah] Total patched methods: {patched.Count}");
+        foreach (var m in patched)
+            _log.LogInfo($"[Silksong Faah] Patched: {m.DeclaringType?.Name}.{m.Name}");
+
+        _log.LogInfo("[Silksong Faah] Plugin loaded and initialised");
+
     }
 }
