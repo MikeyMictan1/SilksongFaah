@@ -9,7 +9,7 @@ A lightweight Hollow Knight: Silksong mod that plays the "Faah" sound effect whe
 
 ## Video Demo
 
-The Video Demo Is Found Here: https://www.youtube.com/watch?v=X6KkrOTBJXk&feature=youtu.be
+The Video Demo Is Found Here: https://www.youtube.com/watch?v=X6KkrOTBJXk
 
 ## Install
 **Thunderstore:** [install from Thunderstore here.](https://thunderstore.io/c/hollow-knight-silksong/p/MikeyMods/SilksongFaah/)
